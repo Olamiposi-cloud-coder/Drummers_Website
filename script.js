@@ -1,13 +1,15 @@
-// Navbar Responsiveness
-const burger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-lists');
+const navOpen = () => {
+  const hamburger = document.querySelector('.burger');
+  const nav = document.querySelector('.nav-links');
+  const navLinks = document.querySelectorAll('.nav-links li')
 
-burger.addEventListener('click', () => {
-  burger.classList.toggle('active');
-  navLinks.classList.toggle('active'); // Use .nav-lists to toggle visibility
+  hamburger.addEventListener('click', () => {
+    nav.classList.toggle('nav-active');
+  });
+
+  navLinks.forEach((link, index) => {
+    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 1.5}s`;
 });
+}
 
-document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-  burger.classList.remove('active');
-  navLinks.classList.remove('active'); // Use .nav-lists to toggle visibility
-}));
+navOpen();
